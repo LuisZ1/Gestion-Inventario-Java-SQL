@@ -1,8 +1,5 @@
 package menuAndMessages;
 
-//import java.util.Locale;
-//import org.springframework.context.support.ResourceBundleMessageSource;
-
 public enum MensajesSistema  {
 
 	
