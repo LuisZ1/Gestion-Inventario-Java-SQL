@@ -15,6 +15,7 @@ public enum MensajesSistema  {
 	BIENVENIDA(Messages.getString("MensajesSistema.BIENVENIDA")), //$NON-NLS-1$
 	ELIMINADO(Messages.getString("MensajesSistema.Eliminado")), //$NON-NLS-1$
 	ELIM_ERROR(Messages.getString("MensajesSistema.eliminado_Error")), //$NON-NLS-1$
+	REINICIOPREGUNTA(Messages.getString("MensajesSistema.preguntar_reinicio")),
 	
 	//Mensajes sobre el material
 	MATERIAL_PEDIR_NOMBRE(Messages.getString("MensajesSistema.material_pedir_nombre")), //$NON-NLS-1$

@@ -40,7 +40,7 @@ public class MainInventarioSQL {
 		
 	//INICIO
 		//DECLARACION DE VARIABLES
-		GestionSQL gestionadoraSQL = new GestionSQL();//HOla
+		GestionSQL gestionadoraSQL = new GestionSQL();
 		Gestion gestionadora = new Gestion();
 		Scanner teclado = new Scanner(System.in);
 		int iniciar = 0;
@@ -136,7 +136,7 @@ public class MainInventarioSQL {
 			}while(opcionMenu != 0);
 				
 			//PREGUNTAR SI INICIAR OTRA VEZ
-			System.out.println("Quiere volver a iniciar? 1 = SI");
+			MensajesSistema.REINICIOPREGUNTA.print();
 			iniciar = teclado.nextInt();
 				
 		}//FIN MIENTRAS
