@@ -44,11 +44,7 @@ public enum MensajesSistema  {
 	ELECTRICIDAD_PEDIR_ID(Messages.getString("MensajesSistema.electricidad_pedir_ID")); //$NON-NLS-1$
 
 	private final String text;
-	
 
-//	private ResourceBundleMensageResource messageSource = new ResourceBundleMensageResource();
-//	private Locale local;
-	
 	
     private MensajesSistema(final String text) {
         this.text = text;

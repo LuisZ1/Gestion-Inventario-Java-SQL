@@ -11,7 +11,7 @@ import gestion.GestionSQL;
 import menuAndMessages.MensajesSistema;
 
 /*
-ANALISIS: El programa servirï¿½ para facilitar la conexion con una base de datos para gestionar un inventario
+ANALISIS: El programa servirá para facilitar la conexion con una base de datos para gestionar un inventario
 RESTRICCIONES:
 ENTRADAS: iniciar el programa, opcion de menu
 SALIDAS:
