@@ -9,6 +9,7 @@ import java.util.Scanner;
 import gestion.Gestion;
 import gestion.GestionSQL;
 import menuAndMessages.MensajesSistema;
+import menuAndMessages.Messages;
 
 /*
 ANALISIS: El programa servirá para facilitar la conexion con una base de datos para gestionar un inventario
@@ -45,14 +46,17 @@ public class MainInventarioSQL {
 		Scanner teclado = new Scanner(System.in);
 		int iniciar = 0;
 		int opcionMenu = 0;
+		String seleccionIdioma;
 		
-		//PREGUNTAR SI INICIAR
-		System.out.println("Está apunto de entrar en un lugar del que no querrá salir. ¿Está seguro?"
-				+ "\nPulse 1 en caso afirmativo");
-		iniciar = teclado.nextInt();
-		
+		//IDIOMA
+		do {
+			System.out.println("Elija el idioma / choose the language: \n es : español \n en : english");
+			seleccionIdioma = teclado.nextLine();
+		}while (!seleccionIdioma.toLowerCase().equals("es")&&!seleccionIdioma.toLowerCase().equals("en"));
+		Messages.changeLanguage(seleccionIdioma);
+			
 		//MIENTRAS QUIERA INICIAR
-		while(iniciar == 1) {
+		do{
 			
 			MensajesSistema.BIENVENIDA.print();
 			
@@ -135,11 +139,7 @@ public class MainInventarioSQL {
 			//MIENTRAS OPCION NO SEA SALIR
 			}while(opcionMenu != 0);
 				
-			//PREGUNTAR SI INICIAR OTRA VEZ
-			MensajesSistema.REINICIOPREGUNTA.print();
-			iniciar = teclado.nextInt();
-				
-		}//FIN MIENTRAS
+		}while(opcionMenu != 0);
 		
 		teclado.close();
 	}//FIN

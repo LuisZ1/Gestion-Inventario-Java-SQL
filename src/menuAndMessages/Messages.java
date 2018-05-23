@@ -5,12 +5,10 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 
 public class Messages {
-	
-	//private Locale locale = new Locale("en_EN");
-	
-	private static final String BUNDLE_NAME = "messages.messages_en_EN"; //$NON-NLS-1$
+		
+	private static String BUNDLE_NAME = "messages.messages"; 
 
-	private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+	private static ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 
 	private Messages() {
 	}
@@ -21,5 +19,16 @@ public class Messages {
 		} catch (MissingResourceException e) {
 			return '!' + key + '!';
 		}
+	}
+	
+	public static void changeLanguage(String lang) {
+		if(lang.toLowerCase().equals("es")) {
+			BUNDLE_NAME = "messages.messages_es_ES";
+		}else {
+			if(lang.toLowerCase().equals("en")) {
+				BUNDLE_NAME = "messages.messages_en_EN";
+			}
+		}
+		RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
 	}
 }
