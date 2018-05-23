@@ -2,8 +2,6 @@ package main;
 
 import java.io.IOException;
 import java.sql.SQLException;
-//import java.util.Locale;
-//import org.springframework.context.support.ResourceBundleMensageResource;
 import java.util.Scanner;
 
 import gestion.Gestion;
@@ -18,45 +16,45 @@ ENTRADAS: iniciar el programa, opcion de menu
 SALIDAS:
 PSEUDOCODIGO:
 	INICIO
-//		REPETIR
-//			MOSTRAR MENU PRINCIPAL
-//			SEGUN OPCION MENU PRINCIPAL
-//				OPCION 1: 		//MOSTRAR MENU CONSULTAS
-//					REPETIR
-//						MOSTRAR MENU CONSULTAS
-//						SEGUN OPCION MENU CONSULTAS
-//							OPCION 1
-//							OPCION 2
-//							OPCION 3
-//							OPCION 4
-//							//OPCION 0 SALIR
-//						FIN SEGUN
-//					MIENTRAS NO QUIERA SALIR DEL SUBMENU
-//				OPCION 2: 		//MOSTRAR MENU AÑADIR
-//					REPETIR
-//						MOSTRAR MENU AÑADIR
-//						SEGUN OPCION MENU AÑADIR
-//							OPCION 1
-//							OPCION 2
-//							OPCION 3
-//							OPCION 4
-//							//OPCION 0 SALIR
-//						FIN SEGUN
-//					MIENTRAS QUIERA SEGUIR AÑADIENDO
-//				OPCION 3: 		//MOSTRAR MENU ELIMINAR
-//					REPETIR
-//					MIENTRAS QUIERA SEGUIR ELIMINANDO
-//						SEGUN OPCION MENU ELIMINAR
-//							OPCION 1
-//							OPCION 2
-//							OPCION 3
-//							OPCION 4
-//							//OPCION 0 SALIR
-//						FIN SEGUN
-//					FIN MIENTRAS
-//				//OPCION 0 SALIR
-//			FIN SEGUN
-//		MIENTRAS NO QUIERA SALIR
+		REPETIR
+			MOSTRAR MENU PRINCIPAL
+			SEGUN OPCION MENU PRINCIPAL
+				OPCION 1: 		//MOSTRAR MENU CONSULTAS
+					REPETIR
+						MOSTRAR MENU CONSULTAS
+						SEGUN OPCION MENU CONSULTAS
+							OPCION 1
+							OPCION 2
+							OPCION 3
+							OPCION 4
+							//OPCION 0 SALIR
+						FIN SEGUN
+					MIENTRAS NO QUIERA SALIR DEL SUBMENU
+				OPCION 2: 		//MOSTRAR MENU AÑADIR
+					REPETIR
+						MOSTRAR MENU AÑADIR
+						SEGUN OPCION MENU AÑADIR
+							OPCION 1
+							OPCION 2
+							OPCION 3
+							OPCION 4
+							//OPCION 0 SALIR
+						FIN SEGUN
+					MIENTRAS QUIERA SEGUIR AÑADIENDO
+				OPCION 3: 		//MOSTRAR MENU ELIMINAR
+					REPETIR
+					MIENTRAS QUIERA SEGUIR ELIMINANDO
+						SEGUN OPCION MENU ELIMINAR
+							OPCION 1
+							OPCION 2
+							OPCION 3
+							OPCION 4
+							//OPCION 0 SALIR
+						FIN SEGUN
+					FIN MIENTRAS
+				//OPCION 0 SALIR
+			FIN SEGUN
+		MIENTRAS NO QUIERA SALIR
 	FIN
 */
 
@@ -75,9 +73,10 @@ public class MainInventarioSQL {
 
 		// IDIOMA
 		do {
-			System.out.println("Elija el idioma / choose the language: \n es : español \n en : english");
+			MensajesSistema.ELEGIR_IDIOMA.print();
 			seleccionIdioma = teclado.nextLine();
 		} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en"));
+		
 		Messages.changeLanguage(seleccionIdioma);
 
 		MensajesSistema.BIENVENIDA.print();
@@ -88,7 +87,7 @@ public class MainInventarioSQL {
 			do {
 				MensajesSistema.MENU_PRINCIPAL.print();
 				opcionMenuP = teclado.nextInt();
-			} while (opcionMenuP < 0 || opcionMenuP > 3);
+			} while (opcionMenuP < 0 || opcionMenuP > 4);
 
 			// SEGUN OPCION MENU PRINCIPAL
 			switch (opcionMenuP) {
@@ -158,6 +157,17 @@ public class MainInventarioSQL {
 						break;
 					}
 				} while (opcionMenu < 0 || opcionMenu > 4);
+				break;
+			case 4:
+				teclado.nextLine();
+				System.out.println("EN CONSTRUCCION");
+				do {
+					MensajesSistema.CAMBIAR_IDIOMA.print();
+					seleccionIdioma = teclado.nextLine();
+				} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en"));
+				
+				Messages.changeLanguage(seleccionIdioma);
+				
 				break;
 			// OPCION 0 SALIR
 			}// FIN SEGUN
