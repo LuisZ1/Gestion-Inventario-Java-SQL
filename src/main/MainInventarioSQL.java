@@ -18,129 +18,151 @@ ENTRADAS: iniciar el programa, opcion de menu
 SALIDAS:
 PSEUDOCODIGO:
 	INICIO
-		PREGUNTAR SI INICIAR
-		MIENTRAS QUIERA INICIAR
-			HACER
-				LEER Y VALIDAR OPCION MENU PRINCIPAL
-				SI OPCION MENU DISTINTO DE SALIR
-					SEGUN OPCION //MENU 1
-						OPCION 1: LEER Y VALIDAR OPCION MENU CONSULTA
-						OPCION 2: LEER Y VALIDAR OPCION MENU Aï¿½ADIR 
-						OPCION 3: LEER Y VALIDAR OPCION MENU ELIMINAR  
-					FIN SEGUN
-				FIN SI
-			MIENTRAS OPCION MENU != 0
-			PREGUNTAR SI INICIAR OTRA VEZ
-		FIN MIENTRAS
+//		REPETIR
+//			MOSTRAR MENU PRINCIPAL
+//			SEGUN OPCION MENU PRINCIPAL
+//				OPCION 1: 		//MOSTRAR MENU CONSULTAS
+//					REPETIR
+//						MOSTRAR MENU CONSULTAS
+//						SEGUN OPCION MENU CONSULTAS
+//							OPCION 1
+//							OPCION 2
+//							OPCION 3
+//							OPCION 4
+//							//OPCION 0 SALIR
+//						FIN SEGUN
+//					MIENTRAS NO QUIERA SALIR DEL SUBMENU
+//				OPCION 2: 		//MOSTRAR MENU AÑADIR
+//					REPETIR
+//						MOSTRAR MENU AÑADIR
+//						SEGUN OPCION MENU AÑADIR
+//							OPCION 1
+//							OPCION 2
+//							OPCION 3
+//							OPCION 4
+//							//OPCION 0 SALIR
+//						FIN SEGUN
+//					MIENTRAS QUIERA SEGUIR AÑADIENDO
+//				OPCION 3: 		//MOSTRAR MENU ELIMINAR
+//					REPETIR
+//					MIENTRAS QUIERA SEGUIR ELIMINANDO
+//						SEGUN OPCION MENU ELIMINAR
+//							OPCION 1
+//							OPCION 2
+//							OPCION 3
+//							OPCION 4
+//							//OPCION 0 SALIR
+//						FIN SEGUN
+//					FIN MIENTRAS
+//				//OPCION 0 SALIR
+//			FIN SEGUN
+//		MIENTRAS NO QUIERA SALIR
 	FIN
 */
 
 public class MainInventarioSQL {
 
 	public static void main(String[] args) throws SQLException, IOException {
-		
-	//INICIO
-		//DECLARACION DE VARIABLES
+
+		// INICIO
+		// DECLARACION DE VARIABLES
 		GestionSQL gestionadoraSQL = new GestionSQL();
 		Gestion gestionadora = new Gestion();
 		Scanner teclado = new Scanner(System.in);
 		int iniciar = 0;
-		int opcionMenu = 0;
+		int opcionMenu = 0, opcionMenuP = 1;
 		String seleccionIdioma;
-		
-		//IDIOMA
+
+		// IDIOMA
 		do {
 			System.out.println("Elija el idioma / choose the language: \n es : español \n en : english");
 			seleccionIdioma = teclado.nextLine();
-		}while (!seleccionIdioma.toLowerCase().equals("es")&&!seleccionIdioma.toLowerCase().equals("en"));
+		} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en"));
 		Messages.changeLanguage(seleccionIdioma);
-			
-		//MIENTRAS QUIERA INICIAR
-		do{
-			
-			MensajesSistema.BIENVENIDA.print();
-			
-			//HACER
+
+		MensajesSistema.BIENVENIDA.print();
+
+		// REPETIR
+		do {
+			// MOSTRAR MENU PRINCIPAL
 			do {
-				
-				//LEER Y VALIDAR OPCION MENU PRINCIPAL
+				MensajesSistema.MENU_PRINCIPAL.print();
+				opcionMenuP = teclado.nextInt();
+			} while (opcionMenuP < 0 || opcionMenuP > 3);
+
+			// SEGUN OPCION MENU PRINCIPAL
+			switch (opcionMenuP) {
+			// OPCION 1: //MOSTRAR MENU CONSULTAS
+			case 1:
 				do {
-					MensajesSistema.MENU_PRINCIPAL.print();
+					MensajesSistema.MENU_CONSULTAS.print();
 					opcionMenu = teclado.nextInt();
-				} while (opcionMenu < 0 || opcionMenu > 3);
-			
-				//SI OPCION DISTINTO DE SALIR
-				if(opcionMenu != 0) {
-			
-					//SEGUN OPCION MENU 1
-					switch(opcionMenu) {
-					
-						//OPCION 1: MOSTRAR MENU CONSULTA
-						case 1: 
-							do {
-								MensajesSistema.MENU_CONSULTAS.print();
-								opcionMenu = teclado.nextInt();
-							} while (opcionMenu < 0 || opcionMenu > 4);
-							
-							switch(opcionMenu) {
-								case 1: gestionadoraSQL.imprimirMateriales();
-								break;
-								case 2: gestionadoraSQL.imprimirHerramientas();
-								break;
-								case 3: gestionadoraSQL.imprimirFerreteria();
-								break;
-								case 4: gestionadoraSQL.imprimirElectricidad();
-								break;
-							}
+
+					switch (opcionMenu) {
+					case 1:
+						gestionadoraSQL.imprimirMateriales();
 						break;
-						
-						//OPCION 2: MOSTRAR MENU Aï¿½ADIR 
-						case 2: 
-							do {
-								MensajesSistema.MENU_AÑADIR.print();
-								opcionMenu = teclado.nextInt();
-							} while (opcionMenu < 0 || opcionMenu > 4);
-							
-							switch(opcionMenu) {
-								case 1: gestionadora.insertarHerramienta();
-								break;
-								case 2: gestionadora.insertarFerreteria();
-								break;
-								case 3: gestionadora.insertarElectricidad();
-								break;
-								case 4: gestionadora.insertarLugar();
-								break;
-							}
+					case 2:
+						gestionadoraSQL.imprimirHerramientas();
 						break;
-						
-						//OPCION 3: MOSTRAR MENU ELIMINAR  
-						case 3: 
-							do {
-								MensajesSistema.MENU_ELIMINAR.print();
-								opcionMenu = teclado.nextInt();
-							} while (opcionMenu < 0 || opcionMenu > 4);
-							
-							switch(opcionMenu) {
-								case 1: gestionadora.eliminarMaterial(1);
-								break;
-								case 2: gestionadora.eliminarMaterial(2);
-								break;
-								case 3: gestionadora.eliminarMaterial(3);
-								break;
-								case 4: gestionadora.eliminarLugar();
-								break;
-							}
+					case 3:
+						gestionadoraSQL.imprimirFerreteria();
 						break;
-						
-					}//FIN SEGUN
-		
-				}//FIN SI
-				
-			//MIENTRAS OPCION NO SEA SALIR
-			}while(opcionMenu != 0);
-				
-		}while(opcionMenu != 0);
-		
+					case 4:
+						gestionadoraSQL.imprimirElectricidad();
+						break;
+					}
+				} while (opcionMenu < 0 || opcionMenu > 4);
+				break;
+			// OPCION 2: //MOSTRAR MENU AÑADIR
+			case 2:
+				do {
+					MensajesSistema.MENU_AÑADIR.print();
+					opcionMenu = teclado.nextInt();
+
+					switch (opcionMenu) {
+					case 1:
+						gestionadora.insertarHerramienta();
+						break;
+					case 2:
+						gestionadora.insertarFerreteria();
+						break;
+					case 3:
+						gestionadora.insertarElectricidad();
+						break;
+					case 4:
+						gestionadora.insertarLugar();
+						break;
+					}
+
+				} while (opcionMenu < 0 || opcionMenu > 4);
+				break;
+			// OPCION 3: //MOSTRAR MENU ELIMINAR
+			case 3:
+				do {
+					MensajesSistema.MENU_ELIMINAR.print();
+					opcionMenu = teclado.nextInt();
+
+					switch (opcionMenu) {
+					case 1:
+						gestionadora.eliminarMaterial(1);
+						break;
+					case 2:
+						gestionadora.eliminarMaterial(2);
+						break;
+					case 3:
+						gestionadora.eliminarMaterial(3);
+						break;
+					case 4:
+						gestionadora.eliminarLugar();
+						break;
+					}
+				} while (opcionMenu < 0 || opcionMenu > 4);
+				break;
+			// OPCION 0 SALIR
+			}// FIN SEGUN
+			// MIENTRAS OPCION NO SEA SALIR
+		} while (opcionMenuP != 0);
 		teclado.close();
-	}//FIN
+	}// FIN
 }
