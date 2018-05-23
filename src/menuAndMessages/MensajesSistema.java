@@ -16,6 +16,12 @@ public enum MensajesSistema  {
 	ELEGIR_IDIOMA(Messages.getString("MensajesSistema.pregunta_elegir_idioma")),
 	CAMBIAR_IDIOMA(Messages.getString("MensajesSistema.pregunta_cambiar_idioma")),
 	
+	//Mensajes SQL
+	INSERT_SUCCEED(Messages.getString("MensajesSistema.insert_succeed")),
+	INSERT_FAIL(Messages.getString("MensajesSistema.insert_fail")),
+	DELETE_SUCCEED(Messages.getString("MensajesSistema.delete_succeed")),
+	DELETE_FAIL(Messages.getString("MensajesSistema.delete_fail")),
+	
 	//Mensajes sobre el material
 	MATERIAL_PEDIR_NOMBRE(Messages.getString("MensajesSistema.material_pedir_nombre")), //$NON-NLS-1$
 	MATERIAL_PEDIR_ID(Messages.getString("MensajesSistema.material_pedir_ID")), //$NON-NLS-1$

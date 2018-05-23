@@ -264,3 +264,46 @@ USE [master]
 GO
 ALTER DATABASE [GestionInventario] SET  READ_WRITE 
 GO
+
+/*
+Entrada: parámetros para insertar una herramienta
+Salida: ninguna, inserta una herramienta nueva
+*/
+CREATE PROCEDURE insertarHerramienta 
+	@nombreHerramienta varchar(50)
+	,@IDLugar int
+	,@tipoHerramienta varchar(50)
+	,@tamañoCm int 
+	AS
+
+	INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar])
+		VALUES(@nombreHerramienta,@IDLugar) 
+
+	DECLARE @MyCounter int; 
+	SET @MyCounter = @@IDENTITY; 
+
+	INSERT INTO [dbo].[Herramientas]([tipo],[tamañoCm],[ID_Material])
+				VALUES(@tipoHerramienta, @tamañoCm, @MyCounter)
+
+GO
+/*
+Entrada: parámetros para insertar un material electrico
+Salida: ninguna, inserta una herramienta nueva
+*/
+CREATE PROCEDURE insertarElectricidad 
+	@nombreHerramienta varchar(50)
+	,@IDLugar int
+	,@tipoHerramienta varchar(50)
+	,@tamañoCm int 
+	AS
+
+	INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar])
+		VALUES(@nombreHerramienta,@IDLugar) 
+
+	DECLARE @MyCounter int; 
+	SET @MyCounter = @@IDENTITY; 
+
+	INSERT INTO [dbo].[Herramientas]([tipo],[tamañoCm],[ID_Material])
+				VALUES(@tipoHerramienta, @tamañoCm, @MyCounter)
+
+GO

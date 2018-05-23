@@ -7,6 +7,8 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+import menuAndMessages.MensajesSistema;
+
 public class GestionSQL{
 
 	private static String sourceURL = "jdbc:sqlserver://localhost";
@@ -29,7 +31,6 @@ public class GestionSQL{
 					String columnValue = rs.getString(i);
 					System.out.print(columnValue /*+ " " + rsmd.getColumnName(i)*/);
 			}
-			System.out.println("");
 		}
 	}
 		
@@ -131,15 +132,18 @@ public class GestionSQL{
 		
 		Statement sentencia = connexionBaseDatos.createStatement();
 
-		String miOrden = "INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar])VALUES('"+nombreHerramienta+"',"+IDLugar+") "
+		/*String miOrden = "INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar])VALUES('"+nombreHerramienta+"',"+IDLugar+") "
 				+ "DECLARE @MyCounter int; SET @MyCounter = @@IDENTITY; INSERT INTO [dbo].[Herramientas]([tipo],[tamañoCm],[ID_Material])"
-				+ "VALUES('"+tipoHerramienta+"',"+tamañoCm+", @MyCounter)";
+				+ "VALUES('"+tipoHerramienta+"',"+tamañoCm+", @MyCounter)";*/
+		
+		String miOrden = "EXECUTE insertarHerramienta "+nombreHerramienta+", "+IDLugar+", "+tipoHerramienta+ ", "+tamañoCm;
+		
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
-			System.out.println("Insertado correctamente");
+			MensajesSistema.INSERT_SUCCEED.print();
 		}else {
-			System.out.println("ERROR AL INSERTAR");
+			MensajesSistema.INSERT_FAIL.print();
 		}
 	}
 	
@@ -161,9 +165,9 @@ public class GestionSQL{
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
-			System.out.println("Insertado correctamente");
+			MensajesSistema.INSERT_SUCCEED.print();
 		}else {
-			System.out.println("ERROR AL INSERTAR");
+			MensajesSistema.INSERT_FAIL.print();
 		}
 	}
 	
@@ -185,9 +189,9 @@ public class GestionSQL{
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
-			System.out.println("Insertado correctamente");
+			MensajesSistema.INSERT_SUCCEED.print();
 		}else {
-			System.out.println("ERROR AL INSERTAR");
+			MensajesSistema.INSERT_FAIL.print();
 		}
 	}
 	
@@ -207,9 +211,9 @@ public class GestionSQL{
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
-			System.out.println("Insertado correctamente");
+			MensajesSistema.INSERT_SUCCEED.print();
 		}else {
-			System.out.println("ERROR AL INSERTAR");
+			MensajesSistema.INSERT_FAIL.print();
 		}
 	}
 	
@@ -229,19 +233,12 @@ public class GestionSQL{
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
-			System.out.println("Eliminado correctamente");
+			MensajesSistema.DELETE_SUCCEED.print();
 		}else {
-			System.out.println("ERROR AL ELIMINAR");
+			MensajesSistema.DELETE_FAIL.print();
 		}
 	}
-	
-	/*
-	ANALISIS: 
-	PRECONDICIONES:
-	ENTRADAS:
-	SALIDAS:
-	POSTCONDICIONES:
-	*/
+
 	public void eliminarLugarSQL(int IDaEliminar) throws SQLException {
 		Connection connexionBaseDatos = DriverManager.getConnection(sourceURL,usuario, password);
 		
@@ -251,16 +248,9 @@ public class GestionSQL{
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
-			System.out.println("Eliminado correctamente");
+			MensajesSistema.DELETE_SUCCEED.print();
 		}else {
-			System.out.println("ERROR AL ELIMINAR");
+			MensajesSistema.DELETE_FAIL.print();
 		}
 	}
-	/*
-	ANALISIS: 
-	PRECONDICIONES:
-	ENTRADAS:
-	SALIDAS:
-	POSTCONDICIONES:
-	*/
 }

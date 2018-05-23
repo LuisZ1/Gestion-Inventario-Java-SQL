@@ -9,8 +9,6 @@ import java.util.Scanner;
 import menuAndMessages.MensajesSistema;
 
 public class Gestion {
-
-	//MensajesSistema msg = new MensajesSistema(); //No instanciable, constructor private
 	
 	private GestionSQL gestionadoraSQL = new GestionSQL();
 	
@@ -24,9 +22,9 @@ public class Gestion {
 		
 		MensajesSistema.HERRAMIENTA_PEDIR_NOMBRE.print();
 		String nombreHerramienta = br.readLine();
-		
-		MensajesSistema.LUGAR_PEDIR_ID.print();
+
 		gestionadoraSQL.imprimirLugaresAlmacenamiento();
+		MensajesSistema.LUGAR_PEDIR_ID.print();
 		int IDLugar = teclado.nextInt();
 		
 		MensajesSistema.HERRAMIENTA_PEDIR_TIPO.print();
@@ -48,17 +46,17 @@ public class Gestion {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner teclado = new Scanner(System.in);
 		
-		System.out.println("Introduzca el NOMBRE del material Electrico que quiere insertar");
+		MensajesSistema.ELECTRICIDAD_PEDIR_NOMBRE.print();
 		String nombreElectricidad = br.readLine();
-		
-		System.out.println("Introduzca la ID DONDE estará guardado el material que quiere insertar");
+
 		gestionadoraSQL.imprimirLugaresAlmacenamiento();
+		MensajesSistema.LUGAR_PEDIR_ID.print();
 		int IDLugar = teclado.nextInt();
 		
-		System.out.println("Introduzca el COLOR el material que quiere insertar");
+		MensajesSistema.ELECTRICIDAD_PEDIR_COLOR.print();
 		String colorElec = br.readLine();
 		
-		System.out.println("Introduzca las DIMENSIONES del material que quiere insertar");
+		MensajesSistema.ELECTRICIDAD_PEDIR_DIMENSIONES.print();
 		String dimensiones = br.readLine();
 		
 		gestionadoraSQL.insertarElectricidadSQL(nombreElectricidad, IDLugar, colorElec, dimensiones);
@@ -74,17 +72,17 @@ public class Gestion {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		Scanner teclado = new Scanner(System.in);
 		
-		System.out.println("Introduzca el NOMBRE del material ferretero que quiere insertar");
+		MensajesSistema.FERRETERIA_PEDIR_NOMBRE.print();
 		String nombreFerreteria = br.readLine();
-		
-		System.out.println("Introduzca la ID DONDE estará guardado el material que quiere insertar");
+
 		gestionadoraSQL.imprimirLugaresAlmacenamiento();
+		MensajesSistema.LUGAR_PEDIR_ID.print();
 		int IDLugar = teclado.nextInt();
 		
-		System.out.println("Introduzca el TIPO el material que quiere insertar");
+		MensajesSistema.FERRETERIA_PEDIR_TIPO.print();
 		String tipoFerreteria = br.readLine();
 		
-		System.out.println("Introduzca las DIMENSIONES del material que quiere insertar");
+		MensajesSistema.FERRETERIA_PEDIR_DIMENSIONES.print();
 		String dimensiones = br.readLine();
 		
 		gestionadoraSQL.insertarFerreteriaSQL(nombreFerreteria, IDLugar, tipoFerreteria, dimensiones);
