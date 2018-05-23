@@ -159,9 +159,12 @@ public class GestionSQL{
 		
 		Statement sentencia = connexionBaseDatos.createStatement();
 
-		String miOrden = "INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar]) VALUES ('"+nombreElectricidad+"','"+IDLugar+"')" 
+		/*String miOrden = "INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar]) VALUES ('"+nombreElectricidad+"','"+IDLugar+"')" 
 				+ "DECLARE @MyCounter int; SET @MyCounter = @@IDENTITY; INSERT INTO [dbo].[Electricidad]([color],[dimensiones],[ID_Material])"
-				+ "VALUES('"+colorElec+"','"+dimensiones+"', @MyCounter)";
+				+ "VALUES('"+colorElec+"','"+dimensiones+"', @MyCounter)";*/
+		
+		String miOrden ="EXECUTE insertarElectricidad"+nombreElectricidad+", "+IDLugar+", "+colorElec+ ", "+dimensiones;
+		
 		int rs = sentencia.executeUpdate (miOrden);
 		
 		if(rs == 1) {
