@@ -2,8 +2,6 @@ package menuAndMessages;
 
 public enum MensajesSistema  {
 
-	
-	
 	//Mensajes genericos
 	MENU_PRINCIPAL(Messages.getString("MensajesSistema.menu_principal")),
 	MENU_CONSULTAS(Messages.getString("MensajesSistema.menu_consultas")),

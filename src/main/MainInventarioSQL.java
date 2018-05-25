@@ -73,9 +73,10 @@ public class MainInventarioSQL {
 
 		// IDIOMA
 		do {
-			MensajesSistema.ELEGIR_IDIOMA.print();
+			System.out.println("Elija el idioma \\n es : Español | en : English | ca: Catalan | eu: Euskera");
+			//MensajesSistema.ELEGIR_IDIOMA.print();
 			seleccionIdioma = teclado.nextLine();
-		} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en"));
+		} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en")&& !seleccionIdioma.toLowerCase().equals("ca")&& !seleccionIdioma.toLowerCase().equals("eu"));
 		
 		Messages.changeLanguage(seleccionIdioma);
 
@@ -164,7 +165,7 @@ public class MainInventarioSQL {
 				do {
 					MensajesSistema.CAMBIAR_IDIOMA.print();
 					seleccionIdioma = teclado.nextLine();
-				} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en"));
+				} while (!seleccionIdioma.toLowerCase().equals("es") && !seleccionIdioma.toLowerCase().equals("en")&& !seleccionIdioma.toLowerCase().equals("ca")&& !seleccionIdioma.toLowerCase().equals("eu"));
 				
 				Messages.changeLanguage(seleccionIdioma);
 				

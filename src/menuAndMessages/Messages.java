@@ -27,6 +27,14 @@ public class Messages {
 		}else {
 			if(lang.toLowerCase().equals("en")) {
 				BUNDLE_NAME = "messages.messages_en_EN";
+			}else {
+				if(lang.toLowerCase().equals("eu")) {
+					BUNDLE_NAME = "messages.messages_es_EU";
+				}else {
+					if(lang.toLowerCase().equals("ca")) {
+					BUNDLE_NAME = "messages.messages_es_CA";
+					}
+				}
 			}
 		}
 		RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
