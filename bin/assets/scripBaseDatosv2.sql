@@ -288,22 +288,70 @@ CREATE PROCEDURE insertarHerramienta
 GO
 /*
 Entrada: parámetros para insertar un material electrico
-Salida: ninguna, inserta una herramienta nueva
+Salida: ninguna, inserta un material nuevo
 */
 CREATE PROCEDURE insertarElectricidad 
-	@nombreHerramienta varchar(50)
+	@nombreElectricidad varchar(50)
 	,@IDLugar int
-	,@tipoHerramienta varchar(50)
-	,@tamañoCm int 
+	,@color varchar(50)
+	,@dimensiones varchar(50) 
+	AS
+
+	INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar]) 
+		VALUES (@nombreElectricidad, @IDLugar)
+	DECLARE @MyCounter int; 
+	SET @MyCounter = @@IDENTITY; 
+	
+	INSERT INTO [dbo].[Electricidad]([color],[dimensiones],[ID_Material])
+		VALUES(@color,@dimensiones, @MyCounter)
+
+GO
+
+/*
+Entrada: parámetros para insertar un material ferretero
+Salida: ninguna, inserta un material ferretero nuevo
+*/
+CREATE PROCEDURE insertarFerreteria 
+	@nombreFerreteria varchar(50)
+	,@IDLugar int
+	,@tipoFerreteria varchar(50)
+	,@dimensiones varchar(50) 
 	AS
 
 	INSERT INTO [dbo].[Materiales]([nombre],[ID_Lugar])
-		VALUES(@nombreHerramienta,@IDLugar) 
-
+		VALUES (@nombreFerreteria,@IDLugar)
 	DECLARE @MyCounter int; 
 	SET @MyCounter = @@IDENTITY; 
+	INSERT INTO [dbo].[Ferreteria]([tipo],[dimensiones],[ID_Material])
+		VALUES(@tipoFerreteria,@dimensiones, @MyCounter)
+GO
 
-	INSERT INTO [dbo].[Herramientas]([tipo],[tamañoCm],[ID_Material])
-				VALUES(@tipoHerramienta, @tamañoCm, @MyCounter)
+/*
+Entrada: parámetros para insertar un nuevo lugar de almacenaje
+Salida: ninguna, inserta un nuevo lugar de almacenaje
+*/
+CREATE PROCEDURE insertarLugarAlmacenaje 
+	@nombreLugar varchar(50)
+	AS
+	INSERT INTO [dbo].[Lugares]([nombre]) VALUES (@nombreLugar)
+GO
 
+/*
+Entrada: parámetros para Eliminar un material
+Salida: ninguna, elimina un material
+*/
+CREATE PROCEDURE eliminarMaterial 
+	@IDMaterial int
+	AS
+	DELETE FROM Materiales WHERE ID = @IDMaterial
+GO
+
+/*
+Entrada: parámetros para eliminar un lugar de almacenaje
+Salida: ninguna, elimina un lugar de almacenamiento
+*/
+CREATE PROCEDURE eliminarLugarAlmacenaje
+	@IDLugar int
+	AS
+	DELETE FROM Lugares WHERE ID = @IDLugar
 GO
